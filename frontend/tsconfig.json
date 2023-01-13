@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["es2020", "DOM"],
+    "rootDir": "src",
+    /* Use a fake outDir */
+    "outDir": "dist-webpack-never-used",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "include": ["src/**/*"]
+}

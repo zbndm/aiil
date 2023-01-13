@@ -1,0 +1,46 @@
+{
+  "name": "@algolia/netlify",
+  "version": "1.0.15",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "plugin"
+  ],
+  "scripts": {
+    "build": "echo 'Website already built in public'",
+    "build:plugin": "cd plugin && yarn build",
+    "dev": "yarn && concurrently --success first --kill-others --names 'plugin,frontend,website' --prefix-colors 'magenta,cyan,yellow' 'yarn dev:plugin' 'yarn dev:frontend' 'yarn dev:website'",
+    "dev:frontend": "cd frontend && yarn dev",
+    "dev:plugin": "cd plugin && yarn dev",
+    "dev:website": "http-server --port 9000 -c -1 public",
+    "changelog:generate": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release": "./scripts/release.sh",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@algolia/algoliasearch-netlify-frontend": "*",
+    "@algolia/netlify-plugin-crawler": "*",
+    "@netlify/build": "26.5.2",
+    "@types/jest": "27.4.1",
+    "@types/node": "16.11.26",
+    "concurrently": "7.1.0",
+    "conventional-changelog": "3.1.25",
+    "conventional-changelog-cli": "2.2.2",
+    "http-server": "14.1.0",
+    "jest": "27.5.1",
+    "json": "11.0.0",
+    "netlify-cli": "8.19.3",
+    "nodemon": "2.0.15",
+    "renovate-config-algolia": "2.1.9",
+    "ts-jest": "27.1.4",
+    "typescript": "4.6.3"
+  },
+  "engines": {
+    "yarn": "1.*",
+    "node": "16.*"
+  },
+  "packageManager": "yarn@3.2.0",
+  "dependencies": {
+    "eslint": "^8.31.0"
+  }
+}
